@@ -4,13 +4,13 @@ const Jimp = require('jimp');
 
 app.eventGridEvent('createThumbnail', {
     handler: async (event, context) => {
-        context.log('Event received:', event.subject);
+        context.log('Event received:', event);
         
         const blobUrl = event.data.url;
         const urlParts = blobUrl.split('/');
         const blobName = urlParts[urlParts.length - 1];
         
-        context.log('Processing:', blobName);
+        context.log('Processing blob:', blobName);
 
         try {
             const blobServiceClient = BlobServiceClient.fromConnectionString(
@@ -39,7 +39,7 @@ app.eventGridEvent('createThumbnail', {
                 blobHTTPHeaders: { blobContentType: 'image/jpeg' }
             });
 
-            context.log('Success!', thumbnailName);
+            context.log('Success! Created:', thumbnailName);
         } catch (error) {
             context.log.error('Error:', error);
             throw error;
