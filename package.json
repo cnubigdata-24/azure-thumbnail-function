@@ -1,0 +1,8 @@
+{
+  "name": "azure-thumbnail-function",
+  "version": "1.0.0",
+  "dependencies": {
+    "@azure/storage-blob": "^12.24.0",
+    "jimp": "^0.22.10"
+  }
+}
